@@ -3,56 +3,25 @@
 #include <algorithm>
 
 int main() {
-  vector<Meeting> meetings;
+  vector<Meeting> duomenys;
   Person jonas("Jonas", true);
   Meeting jonasMeeting(jonas);
   Person onute("Onute", true);
   Meeting onuteMeeting(onute);
-  meetings.emplace_back(jonasMeeting);
-  meetings.emplace_back(onute);
+  duomenys.emplace_back(jonasMeeting);
+  duomenys.emplace_back(onute);
 
-  VismaMeetings vismaMeetings(meetings);
+  VismaMeetings vismaMeetings(duomenys);
   vismaMeetings.displayMeetings();
 
   int input;
-  cout << "Pasirinkite vartotoja: ";
+  cout << "Pasirinkite vartotodja: ";
   cin >> input;
-  vismaMeetings.displayMembers(meetings[input-1].getPerson());
+  //vismaMeetings.displayMembers(vismaMeetings.getMeetings()[input-1].getPerson());
 
-  std::vector<Meeting>::iterator it;
-  string temp = meetings[input-1].getPerson().getName();
-  it = std::find_if(meetings.begin(), meetings.end(), [temp](Meeting const& obj)
-  {
-    return obj.getPerson().getName() == temp;
-  });
-
-
-
+  Meeting meeting = vismaMeetings.getMeetings()[input-1];
 
   //it->addMember(Person("Petras", false));
-
- // if(it != meetings.end())
-
-//    cout << "Lamba rezultatas: " << it->getPerson().getName()<<endl;
-
-//    //std::cout<<"Item Price ::"<<it->getPrice()<<" Count :: "<<it->getCount()<<std::endl;
-//  else
-//    std::cout<<"Item not Found"<<std::endl;
-
-
-
-//  if(it != vecOfItems.end())
-//    std::cout<<"Item Price ::"<<it->getPrice()<<" Count :: "<<it->getCount()<<std::endl;
-//  else
-//    std::cout<<"Item not Found"<<std::endl;
-//
-//  //it = std::find(vecOfItems.begin(), vecOfItems.end(), Item("D123",99,0));
-//  if(it != vecOfItems.end())
-//    std::cout<<"Found with Price ::"<<it->getPrice()<<" Count :: "<<it->getCount()<<std::endl;
-//  else
-//    std::cout<<"Item with ID :: D126 not Found"<<std::endl;
-
-
 
 
   int option = 1;
@@ -67,13 +36,16 @@ int main() {
     cin >> option;
     switch (option) {
       case 1:
-          it->addMember(jonas);
-        for(auto iii: it->getMembers()){
-          cout << "______________________"<< iii.getName() << "_______________________________\n";
-        }
+          meeting.addMember(onute);
+         // TODO fix vismaMeetings.displayMembers(meeting.getPerson());
+//        for(auto iii: meeting.getMembers()){
+//          cout << "______________________"<< iii.getName() << "_______________________________\n";
+//        }
         break;
       case 2:
-        break;
+        for(auto iii: meeting.getMembers()){
+          cout << "______________________"<< iii.getName() << "_______________________________\n";
+        }        break;
       case 0:
         break;
       default:

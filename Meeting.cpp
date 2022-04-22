@@ -65,7 +65,17 @@ Meeting::Meeting(const Person &person) : _person(person) {
 }
 
 void Meeting::addMember(const Person &person) {
-  _members.emplace_back(person);
+
+  for (const auto& it: _members) {
+    if(it.getName() == person.getName()){
+      cout << "Jau yra tokiu vardu: " << it.getName() << endl;
+    } else{
+      _members.emplace_back(person);
+    }
+  }
+
+
+
 }
 
 const vector<Person> &Meeting::getMembers() const {

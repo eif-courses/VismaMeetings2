@@ -16,6 +16,7 @@ public:
   void displayMeetings();
   void displayMembers(const Person& person) const;
   void removeMeetingFromList(const Meeting& meeting);
+  Person getResponsiblePersonByName(string name);
 
   explicit VismaMeetings(const vector<Meeting> &meetings);
 

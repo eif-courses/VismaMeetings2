@@ -37,3 +37,11 @@ VismaMeetings::VismaMeetings(const vector<Meeting> &meetings) : _meetings(meetin
 const vector<Meeting> &VismaMeetings::getMeetings() const {
   return _meetings;
 }
+
+Person VismaMeetings::getResponsiblePersonByName(string name) {
+  for (const auto& it: _meetings) {
+    if(name == it.getName()){
+      return it.getPerson();
+    }
+  }
+}
